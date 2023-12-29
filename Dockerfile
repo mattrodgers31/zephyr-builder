@@ -35,7 +35,8 @@ RUN apt-get update && \
 RUN pip3 install --no-cache-dir \
     west \
     -r https://raw.githubusercontent.com/zephyrproject-rtos/zephyr/main/scripts/requirements.txt \
-    -r https://raw.githubusercontent.com/zephyrproject-rtos/mcuboot/main/scripts/requirements.txt
+    -r https://raw.githubusercontent.com/zephyrproject-rtos/mcuboot/main/scripts/requirements.txt \
+    -r https://raw.githubusercontent.com/nrfconnect/sdk-nrf/main/scripts/requirements.txt
 
 # Get and install Zephyr SDK
 RUN wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.4/zephyr-sdk-0.16.4_linux-x86_64_minimal.tar.xz \
@@ -46,8 +47,6 @@ RUN wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.4/
 
 RUN useradd -ms /bin/bash $username
 USER $username
-
-ENV ZEPHYR_BASE=/workdir/zephyrproject/zephyr
 
 WORKDIR workdir
 
